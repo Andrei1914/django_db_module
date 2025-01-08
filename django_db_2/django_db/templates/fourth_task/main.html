@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1 align="center">Приветствуем {{ info }} в магазине игр!</h1>
+    <div class="description">Наш магазин игр предлагает широкий выбор видеоигр для всех платформ: от консольных хитов до инди-игр. 
+    У нас вы найдете последние новинки, классические игры и редкие коллекционные издания. 
+    Погрузитесь в мир развлечений с нашими акциями и скидками!</div>
+</body>
+</html>
