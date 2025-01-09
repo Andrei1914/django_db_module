@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
+</head>
+<body>
+    {% include 'menu.html'%}
+    <div>
+        {% for article in page %}
+            <div class="news-item">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+                <p><em>Дата: {{ article.date }}</em></p>
+            </div>
+        {% empty %}
+            <p align="center">Нет новостей для отображения.</p>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ page.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page.number }} из {{ page.paginator.num_pages }}.
+            </span>
+
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}">Следующая</a>
+                <a href="?page={{ page.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
